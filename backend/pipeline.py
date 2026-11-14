@@ -1,4 +1,6 @@
 """Run the full ingestion pipeline: GitHub URL -> vector database."""
+from dotenv import load_dotenv
+load_dotenv()
 import sys
 
 from backend.services.chunking import chunk_documents

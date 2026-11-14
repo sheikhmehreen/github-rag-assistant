@@ -1,4 +1,7 @@
 """Try retrieval by hand: python tests/check_retrieval.py "your question" """
+from dotenv import load_dotenv
+load_dotenv()
+
 import sys
 
 from backend.services.retrieval import search_chunks
