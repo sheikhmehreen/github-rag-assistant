@@ -29,7 +29,7 @@ def test_prepare_rows_keeps_chunk_and_repository_details():
     assert rows[0][5] == "README.md"
     assert rows[0][6] == 0
     assert rows[0][7] == "A test chunk"
-    assert len(rows[0][8]) == 768
+    assert rows[0][8].dimensions() == 768
 
 
 def test_prepare_rows_accepts_empty_input():

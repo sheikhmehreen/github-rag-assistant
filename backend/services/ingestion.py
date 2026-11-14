@@ -27,7 +27,7 @@ IMPORTANT_NAMES = {
     "dockerfile", "makefile", "procfile", "license", "readme", "justfile",
     "gemfile", "rakefile", "go.mod", "cargo.toml", "requirements.txt",
 }
-SECRET_NAME = re.compile(r"(?:^|[._-])(?:id_rsa|id_ed25519|.env|credentials?|secrets?)(?:[._-]|$)", re.I)
+SECRET_NAME = re.compile(r"(?:^|[._-])(?:id_rsa|id_ed25519|\.env|credentials?|secrets?)(?:[._-]|$)", re.I)
 MAX_FILE_SIZE = 1 * 1024 * 1024
 MAX_TOTAL_SIZE = 50 * 1024 * 1024
 MAX_FILES = 5000

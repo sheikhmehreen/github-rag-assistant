@@ -92,3 +92,21 @@ def store_chunks(embedded_chunks, database_url=None):
             cursor.executemany(query, rows)
 
     return len(rows)
+
+
+def delete_old_commits(repository_url, commit_sha, database_url=None):
+    """Remove chunks saved from earlier commits of the same repository."""
+    database_url = database_url or os.getenv("DATABASE_URL")
+    if not database_url:
+        raise ValueError("Set the DATABASE_URL environment variable")
+
+    with psycopg.connect(database_url) as connection:
+        with connection.cursor() as cursor:
+            cursor.execute(
+                "DELETE FROM repository_chunks "
+                "WHERE repository_url = %s AND commit_sha IS DISTINCT FROM %s",
+                (repository_url, commit_sha),
+            )
+            deleted = cursor.rowcount
+
+    return deleted
